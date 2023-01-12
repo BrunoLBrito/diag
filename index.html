@@ -1813,7 +1813,12 @@ function calcDeadline(initial, days) {
 }
 
 function clear() {
-  document.querySelector('#memo').innerHTML = datas
+  if(localStorage.getItem('infos')){
+    const { name, manager } = JSON.parse(localStorage.getItem('infos'))
+
+    datas = getMemo(name, manager)
+    document.querySelector('#memo').innerHTML = datas
+  } 
 }
 
 function clearLog() {
